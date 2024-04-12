@@ -1,4 +1,4 @@
-# from unsloth import FastLanguageModel
+from unsloth import FastLanguageModel
 # from datasets import load_dataset
 # from trl import SFTTrainer
 # from transformers import TrainingArguments, TextStreamer
