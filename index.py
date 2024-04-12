@@ -61,6 +61,12 @@ def model_train(id):
 
     index = fileOperations.highest_numbered_file(id_items)
 
+    if id not in custom_model_and_tokenizer:
+        custom_model_and_tokenizer[id] = {
+            "data": (None, None),
+            "index": 0,
+        }
+
     if index == custom_model_and_tokenizer[id]["index"]:
         temp_model, temp_tokenizer = student_thai.load_data_and_train(
             typhoon_model,
