@@ -2,7 +2,7 @@ import json
 import os
 from flask import Flask, jsonify, request
 from utils import fileOperations
-# from model import student_thai
+from model import student_thai
 
 typhoon_model, typhoon_tokenizer = None, None
 
@@ -47,8 +47,8 @@ def get_files(id):
 @app.route("/train/<string:id>", methods=["GET"])
 def model_train(id):
     global typhoon_model, typhoon_tokenizer
-    # if typhoon_model is None or typhoon_tokenizer is None:
-        # typhoon_model, typhoon_tokenizer = student_thai.load_model()
+    if typhoon_model is None or typhoon_tokenizer is None:
+        typhoon_model, typhoon_tokenizer = student_thai.load_model()
     print("Model loaded for ", id)
     return json.dumps("Model training has started")
 
