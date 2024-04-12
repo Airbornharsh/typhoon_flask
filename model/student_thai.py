@@ -1,7 +1,7 @@
-# from unsloth import FastLanguageModel
-# from datasets import load_dataset
-# from trl import SFTTrainer
-# from transformers import TrainingArguments, TextStreamer
+from unsloth import FastLanguageModel
+from datasets import load_dataset
+from trl import SFTTrainer
+from transformers import TrainingArguments, TextStreamer
 import torch
 
 max_seq_length = 2048
@@ -10,36 +10,34 @@ load_in_4bit = True
 
 
 def load_model():
-    print("Loading model")
-    return "", ""
-    # model, tokenizer = FastLanguageModel.from_pretrained(
-    #     model_name="scb10x/typhoon-7b",
-    #     max_seq_length=max_seq_length,
-    #     dtype=dtype,
-    #     load_in_4bit=load_in_4bit,
-    # )
+    model, tokenizer = FastLanguageModel.from_pretrained(
+        model_name="scb10x/typhoon-7b",
+        max_seq_length=max_seq_length,
+        dtype=dtype,
+        load_in_4bit=load_in_4bit,
+    )
 
-    # model = FastLanguageModel.get_peft_model(
-    #     model,
-    #     r=16,
-    #     target_modules=[
-    #         "q_proj",
-    #         "k_proj",
-    #         "v_proj",
-    #         "o_proj",
-    #         "gate_proj",
-    #         "up_proj",
-    #         "down_proj",
-    #     ],
-    #     lora_alpha=16,
-    #     lora_dropout=0,
-    #     bias="none",
-    #     use_gradient_checkpointing=True,
-    #     random_state=3407,
-    #     use_rslora=False,
-    #     loftq_config=None,
-    # )
-    # return model, tokenizer
+    model = FastLanguageModel.get_peft_model(
+        model,
+        r=16,
+        target_modules=[
+            "q_proj",
+            "k_proj",
+            "v_proj",
+            "o_proj",
+            "gate_proj",
+            "up_proj",
+            "down_proj",
+        ],
+        lora_alpha=16,
+        lora_dropout=0,
+        bias="none",
+        use_gradient_checkpointing=True,
+        random_state=3407,
+        use_rslora=False,
+        loftq_config=None,
+    )
+    return model, tokenizer
 
 
 # alpaca_prompt = """Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
