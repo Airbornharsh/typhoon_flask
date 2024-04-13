@@ -17,6 +17,10 @@ def get_employees():
 
 @app.route("/upload/<string:id>", methods=["POST"])
 def upload_file(id):
+    if "file" not in request.files:
+        return "No file part"
+    file = request.files["file"]
+    
     folder_path = "./sheets/" + id + "/"
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
@@ -28,10 +32,6 @@ def upload_file(id):
 
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
-
-    if "file" not in request.files:
-        return "No file part"
-    file = request.files["file"]
     if file.filename == "":
         return "No selected file"
     file.save("./sheets/" + id + "/" + str(new_id) + "/data.csv")
