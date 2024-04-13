@@ -111,6 +111,7 @@ def load_data_and_train(model, tokenizer, id):
         print(f"GPU = {gpu_stats.name}. Max memory = {max_memory} GB.")
         print(f"{start_gpu_memory} GB of memory reserved.")
 
+        import pdb; pdb.set_trace()
         trainer_stats = trainer.train()
 
         # @title Show final memory and time stats
