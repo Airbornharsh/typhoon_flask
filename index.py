@@ -9,6 +9,7 @@ custom_model_and_tokenizer = {"thai_typhoon_model": {"data": (None, None), "inde
 
 app = Flask(__name__)
 
+typhoon_model, typhoon_tokenizer = student_thai.load_model()
 
 @app.route("/", methods=["GET"])
 def get_employees():
