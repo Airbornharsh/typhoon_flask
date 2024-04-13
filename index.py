@@ -72,7 +72,7 @@ def model_train(id):
         print(index)
         print(custom_model_and_tokenizer)
 
-        if index == custom_model_and_tokenizer[id]["index"]:
+        if index != custom_model_and_tokenizer[id]["index"]:
             print("Index Found")
             temp_model, temp_tokenizer = student_thai.load_data_and_train(
                 typhoon_model,
@@ -81,7 +81,7 @@ def model_train(id):
             )
             print("Loaded Data and Train")
             custom_model_and_tokenizer[id] = {
-                "data": (typhoon_model, typhoon_tokenizer),
+                "data": (temp_model, temp_tokenizer),
                 "index": index,
             }
             print("Loaded Data and Train 2")
