@@ -93,7 +93,7 @@ def load_data_and_train(model, tokenizer, id):
                 fp16=not torch.cuda.is_bf16_supported(),
                 bf16=torch.cuda.is_bf16_supported(),
                 logging_steps=1,
-                optim="adamw_8bit",
+                # optim="adamw_8bit",
                 weight_decay=0.01,
                 lr_scheduler_type="linear",
                 seed=3407,
