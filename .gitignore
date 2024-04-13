@@ -7,3 +7,5 @@ sheets
 .vscode
 
 __pycache__
+
+models
