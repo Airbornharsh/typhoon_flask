@@ -68,7 +68,7 @@ def load_data_and_train(model, tokenizer, id):
         }
 
     print("Loading data")
-    dataset = load_dataset("./", id, split="train")
+    dataset = load_dataset("./", id)
     print(dataset)
     dataset = dataset.map(
         formatting_prompts_func,
@@ -100,7 +100,7 @@ def load_data_and_train(model, tokenizer, id):
         ),
     )
     print("Trainer")
-    
+
     # @title Show current memory stats
     gpu_stats = torch.cuda.get_device_properties(0)
     start_gpu_memory = round(torch.cuda.max_memory_reserved() / 1024 / 1024 / 1024, 3)
