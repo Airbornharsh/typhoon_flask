@@ -68,7 +68,7 @@ def load_data_and_train(model, tokenizer, id):
         }
 
     print("Loading data")
-    dataset = load_dataset("./" + id, split="train")
+    dataset = load_dataset("./sheets/" + id, split="train")
     print(dataset)
     dataset = dataset.map(
         formatting_prompts_func,
