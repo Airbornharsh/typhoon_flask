@@ -23,7 +23,7 @@ alpaca_prompt = """Below is an instruction that describes a task, paired with an
 def load_model():
     print("Loading model")
     model, tokenizer = FastLanguageModel.from_pretrained(
-        model_name="scb10x/typhoon-7b",
+        model_name="./models",
         max_seq_length=max_seq_length,
         dtype=dtype,
         load_in_4bit=load_in_4bit,
@@ -120,7 +120,7 @@ def load_data_and_train(model, tokenizer, id):
     print(f"Peak reserved memory for training = {used_memory_for_lora} GB.")
     print(f"Peak reserved memory % of max memory = {used_percentage} %.")
     print(f"Peak reserved memory for training % of max memory = {lora_percentage} %.")
-    
+
     return model, tokenizer
 
     # FastLanguageModel.for_inference(model)
